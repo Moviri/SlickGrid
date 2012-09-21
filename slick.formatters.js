@@ -12,7 +12,8 @@
         "PercentComplete": PercentCompleteFormatter,
         "PercentCompleteBar": PercentCompleteBarFormatter,
         "YesNo": YesNoFormatter,
-        "Checkmark": CheckmarkFormatter
+        "Checkmark": CheckmarkFormatter,
+        "TwinBarFormatter": TwinBarFormatter
       }
     }
   });
@@ -44,7 +45,24 @@
 
     return "<span class='percent-complete-bar' style='background:" + color + ";width:" + value + "%'></span>";
   }
+  function TwinBarFormatter(row, cell, values, columnDef, dataContext) {
+    if (values == null || values.length < 3) {
+      return "";
+    }
+	
+    var colors = ["DarkTurquoise", "DodgerBlue"];
+	var max = parseFloat(values[2]);
+	var val1 = Math.abs(parseFloat(values[0]))/max*50;
+	var val2 = Math.abs(parseFloat(values[1]))/max*50;
+	
+	var bar0 = "<span class='percent-complete-bar' style='background:transparent;width:" + (50 - val1) + "%'></span>";
+	var bar1 = "<span class='percent-complete-bar' style='background:" + colors[0] + ";width:" + val1 + "%'></span>";
+	var bar2 = "<span class='percent-complete-bar' style='background:" + colors[1] + ";width:" + val2 + "%'></span>";
 
+    return bar0+bar1+bar2;
+  }
+
+  
   function YesNoFormatter(row, cell, value, columnDef, dataContext) {
     return value ? "Yes" : "No";
   }
