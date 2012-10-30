@@ -13,7 +13,8 @@
         "PercentCompleteBar": PercentCompleteBarFormatter,
         "YesNo": YesNoFormatter,
         "Checkmark": CheckmarkFormatter,
-        "TwinBarFormatter": TwinBarFormatter
+        "TwinBarFormatter": TwinBarFormatter,
+        "DateFormatter": DateFormatter
       }
     }
   });
@@ -50,7 +51,7 @@
       return "";
     }
 	
-    var colors = ["DarkTurquoise", "DodgerBlue"];
+    var colors = dataContext.schema_colors;
 	var max = parseFloat(values[2]);
 	var val1 = Math.abs(parseFloat(values[0]))/max*50;
 	var val2 = Math.abs(parseFloat(values[1]))/max*50;
@@ -62,6 +63,9 @@
     return bar0+bar1+bar2;
   }
 
+  function DateFormatter(row, cell, value, columnDef, dataContext) {
+    return new Date(value);
+  }
   
   function YesNoFormatter(row, cell, value, columnDef, dataContext) {
     return value ? "Yes" : "No";
