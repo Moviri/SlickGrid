@@ -306,8 +306,9 @@ if (typeof Slick === "undefined") {
 
         $container
             .bind("resize.slickgrid", resizeCanvas);
-        $viewport
-            .bind("scroll", handleScroll);
+        
+    	$viewport.bind("scroll", handleScroll);
+        
         $headerScroller
             .bind("contextmenu", handleHeaderContextMenu)
             .bind("click", handleHeaderClick)
@@ -613,9 +614,13 @@ if (typeof Slick === "undefined") {
 
       for (var i = 0; i < columns.length; i++) {
         var m = columns[i];
+        
+        var dimmed = '';
+        if (i == 0 && m.id == 'lineNumberField')
+        	dimmed = " dimmed"
 
         var header = $("<div class='ui-state-default slick-header-column s-th' id='" + uid + m.id + "' />")
-            .html("<span class='slick-column-name'>" + m.name + "</span>")
+            .html("<span class='slick-column-name"+dimmed+"'>" + m.name + "</span>")
             .width(m.width - headerColumnWidthDiff)
             .attr("title", m.toolTip || "")
             .data("column", m)
@@ -1473,7 +1478,7 @@ if (typeof Slick === "undefined") {
       if (metadata && metadata.cssClasses) {
         rowCss += " " + metadata.cssClasses;
       }
-      stringArray.push("<div class='"/*ui-widget-content "*/ + rowCss + "' style='top:" + (options.rowHeight * row - offset) + "px' rowNum='"+row+"'>");
+      stringArray.push("<div class='widget-content "  + rowCss + "' style='top:" + (options.rowHeight * row - offset) + "px' rowNum='"+row+"'>");
 
       var colspan, m;
       for (var i = 0, ii = columns.length; i < ii; i++) {
@@ -1642,8 +1647,6 @@ if (typeof Slick === "undefined") {
     }
 
     function getViewportHeight() {
-//    	console.log($(container))
-//    	console.log("GetViewportHeight -> Container height: "+$(container).height());
       return parseFloat($.css($container[0], "height", true)) -
           parseFloat($.css($container[0], "paddingTop", true)) -
           parseFloat($.css($container[0], "paddingBottom", true)) -
@@ -1654,7 +1657,6 @@ if (typeof Slick === "undefined") {
 
     function resizeCanvas() {
       if (!initialized) { return; }
-//      console.log("Slick.Grid.js resizeCanvas");
       if (options.autoHeight) {
         viewportH = options.rowHeight * (getDataLength() + (options.enableAddRow ? 1 : 0));
       } else {
@@ -1995,8 +1997,6 @@ if (typeof Slick === "undefined") {
 
     function render() {
       if (!initialized) { return; }
-//      console.log("Slick.grid.js render")
-//      console.log("viewportH:"+viewportH)
       var visible = getVisibleRange();
       var rendered = getRenderedRange();
       // remove rows no longer in the viewport
@@ -2074,8 +2074,7 @@ if (typeof Slick === "undefined") {
               Math.abs(lastRenderedScrollLeft - scrollLeft) < viewportW)) {
             render();
           } else {
-            h_render = setTimeout(render, 50);
-          }
+            h_render = setTimeout(render, 50);         }
 
           trigger(self.onViewportChanged, {});
         }
@@ -2398,7 +2397,7 @@ if (typeof Slick === "undefined") {
     }
 
 	function handleRowMouseEnter(e) {
-	  console.log(e.currentTarget.attributes.rowNum)
+	  //console.log(e.currentTarget.attributes.rowNum)
 	  if (options.trackMouseHover)
 		trigger(self.onRowHoverIn, {row:e.currentTarget.attributes.rowNum.value}, e);
     }
