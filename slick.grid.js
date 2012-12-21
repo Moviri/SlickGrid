@@ -680,6 +680,8 @@ if (typeof Slick === "undefined") {
 			var lastBottomColumnHtml = "";
 			if (i == 0 && options.showLineNumbers)
 				lastBottomColumnHtml = getDataLength();
+			else if (options.showTotals && i == (options.showLineNumbers?1:0))
+				lastBottomColumnHtml = "<b>Grand total(s)</b>";
 			else if (i < columns.length-(options.useInnerChart ? 1 : 0) && options.totals[m.id])
 				lastBottomColumnHtml = options.totals[m.id];
 			
@@ -699,7 +701,9 @@ if (typeof Slick === "undefined") {
 			{
 				var max = options.innerChartMax;
 				var numFormatter = d3.format("s");
-				lastTopColumnHtml = "<table style='width:100%'><tr style='width:100%'><td style='text-align:left'>"+numFormatter(max)+"</td><td style='text-align:left'>"+numFormatter(max/2)+"</td><td style='text-align:center'>0</td><td style='text-align:right'>"+numFormatter(max/2)+"</td><td style='text-align:right'>"+numFormatter(max)+"</td></tr></table>";
+				if (options.innerChartSerie2Name)
+					lastTopColumnHtml = "<table style='width:100%'><tr style='width:100%'><td style='text-align:left;width:16.66%'>"+numFormatter(max)+"</td><td style='text-align:left;width:16.66%'>"+numFormatter(max/2)+"</td><td style='text-align:center;width:16.67%'>0</td><td style='text-align:right;width:16.66%'>"+numFormatter(max/2)+"</td><td style='text-align:right;width:16.66%'>"+numFormatter(max)+"</td></tr></table>";
+				else lastTopColumnHtml = "<table style='width:100%'><tr style='width:100%'><td style='text-align:left;width:33.33%'>0</td><td style='text-align:center;width:33.33%'>"+numFormatter(max/2)+"</td><td style='text-align:right;width:33.33%'>"+numFormatter(max)+"</td></tr></table>";
 			}	
 			headerTop = $("<div class='ui-state-default slick-subheader-column' id='" + uid + m.id + "' />")
 				.html("<span class='slick-column-name'>" + lastTopColumnHtml + "</span>")
@@ -1616,6 +1620,8 @@ if (typeof Slick === "undefined") {
       // if there is a corresponding row (if not, this is the Add New row or this data hasn't been loaded yet)
       if (d) {
         var value = getDataItemValueForColumn(d, m);
+        //if (cell == 1)
+        	//value = "<b>"+value+"</b>"
         stringArray.push(getFormatter(row, m)(row, cell, value, m, d));
       }
 
@@ -2869,7 +2875,7 @@ if (typeof Slick === "undefined") {
       scrollTo(row * options.rowHeight);
       render();
     }
-
+    
     function getColspan(row, cell) {
       var metadata = data.getItemMetadata && data.getItemMetadata(row);
       if (!metadata || !metadata.columns) {

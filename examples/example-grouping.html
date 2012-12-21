@@ -157,7 +157,7 @@ function groupByDuration() {
       }
   );
   dataView.setAggregators([
-    new Slick.Data.Aggregators.Avg("percentComplete")
+    new Slick.Data.Aggregators.Sum("percentComplete")
   ], false);
 }
 
@@ -172,7 +172,7 @@ function groupByDurationOrderByCount() {
       }
   );
   dataView.setAggregators([
-    new Slick.Data.Aggregators.Avg("percentComplete")
+    new Slick.Data.Aggregators.Sum("percentComplete")
   ], false);
 }
 
@@ -187,7 +187,7 @@ function groupByDurationOrderByCountGroupCollapsed() {
       }
   );
   dataView.setAggregators([
-    new Slick.Data.Aggregators.Avg("percentComplete")
+    new Slick.Data.Aggregators.Sum("percentComplete")
   ], true);
 }
 
@@ -224,7 +224,7 @@ $(function () {
 
   // register the group item metadata provider to add expand/collapse group handlers
   grid.registerPlugin(groupItemMetadataProvider);
-  grid.setSelectionModel(new Slick.CellSelectionModel());
+//  grid.setSelectionModel(new Slick.CellSelectionModel());
 
   var pager = new Slick.Controls.Pager(dataView, grid, $("#pager"));
   var columnpicker = new Slick.Controls.ColumnPicker(columns, grid, options);
