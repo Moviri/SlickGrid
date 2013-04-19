@@ -2429,19 +2429,6 @@ if (typeof Slick === "undefined") {
           setActiveCellInternal(getCellNode(cell.row, cell.cell), (cell.row === getDataLength()) || options.autoEdit);
         }
       }
-      // desel
-      else if (activeRow == cell.row)
-      {
-    	  var rows = getSelectedRows();
-    	  for (var j = 0; j < rows.length; j++)
-    		  if (rows[j] == activeRow)
-			  {
-    			  rows.splice(j, 1)
-    			  break;
-			  }
-    	  setSelectedRows(rows);
-    	  resetActiveCell();
-      }
     }
 
     function handleContextMenu(e) {
