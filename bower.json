@@ -7,7 +7,7 @@
   ],
   "main": "slick.core.js",
   "license": "MIT",
-  "_id": "slickgrid-moviri@2.1",
+  "_id": "slickgrid-moviri@2.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Moviri/SlickGrid.git"
