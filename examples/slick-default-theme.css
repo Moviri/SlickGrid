@@ -29,7 +29,7 @@ classes should alter those!
   height: 100%;
 }
 
-.slick-row.ui-state-active {
+.slick-row.uistate-active {
   background: #F5F7D7;
 }
 
@@ -90,7 +90,7 @@ classes should alter those!
   background: #fafafa;
 }
 
-.slick-row.ui-state-active {
+.slick-row.uistate-active {
   background: #F5F7D7;
 }
 

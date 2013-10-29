@@ -12,7 +12,7 @@ classes should alter those!
   -webkit-border-radius: 3px;
 }
 
-.slick-header.ui-state-default, .slick-headerrow.ui-state-default {
+.slick-header.uistate-default, .slick-headerrow.uistate-default {
   width: 100%;
   overflow: hidden;
   border-left: 0px;
@@ -25,12 +25,12 @@ classes should alter those!
   overflow: hidden;
 }
 
-.slick-header-column.ui-state-default {
+.slick-header-column.uistate-default {
   position: relative;
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 16px;
+  height: auto /*16px*/;
   line-height: 16px;
   margin: 0;
   padding: 4px;
@@ -41,7 +41,7 @@ classes should alter those!
   float: left;
 }
 
-.slick-headerrow-column.ui-state-default {
+.slick-headerrow-column.uistate-default {
   padding: 4px;
 }
 
@@ -49,8 +49,8 @@ classes should alter those!
   font-style: italic;
 }
 
-.slick-subheader.ui-state-default, .slick-subheaderrow.ui-state-default,
-.slick-footer.ui-state-default, .slick-footerrow.ui-state-default {
+.slick-subheader.uistate-default, .slick-subheaderrow.uistate-default,
+.slick-footer.uistate-default, .slick-footerrow.uistate-default {
   width: 100%;
   overflow: hidden;
   border-left: 0px;
@@ -64,8 +64,8 @@ classes should alter those!
   overflow: hidden;
 }
 
-.slick-subheader-column.ui-state-default,
-.slick-footer-column.ui-state-default {
+.slick-subheader-column.uistate-default,
+.slick-footer-column.uistate-default {
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -81,7 +81,7 @@ classes should alter those!
   float: left;
 }
 
-.slick-subheaderrow-column.ui-state-default , .slick-footerrow-column.ui-state-default {
+.slick-subheaderrow-column.uistate-default , .slick-footerrow-column.uistate-default {
   padding: 4px;
 }
 
@@ -126,7 +126,7 @@ classes should alter those!
   outline: 0;
 }
 
-.slick-row.ui-widget-content, .slick-row.ui-state-active, .slick-row.widget-content {
+.slick-row.ui-widget-content, .slick-row.uistate-active, .slick-row.widget-content {
   position: absolute;
   border: 0px;
   width: 100%;

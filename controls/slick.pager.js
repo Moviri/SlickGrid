@@ -81,7 +81,7 @@
         }
       });
 
-      var icon_prefix = "<span class='ui-state-default ui-corner-all ui-icon-container'><span class='ui-icon ";
+      var icon_prefix = "<span class='uistate-default ui-corner-all ui-icon-container'><span class='ui-icon ";
       var icon_suffix = "' /></span>";
 
       $(icon_prefix + "ui-icon-lightbulb" + icon_suffix)
@@ -108,7 +108,7 @@
 
       $container.find(".ui-icon-container")
           .hover(function () {
-            $(this).toggleClass("ui-state-hover");
+            $(this).toggleClass("uistate-hover");
           });
 
       $container.children().wrapAll("<div class='slick-pager' />");
@@ -118,18 +118,18 @@
     function updatePager(pagingInfo) {
       var state = getNavState();
 
-      $container.find(".slick-pager-nav span").removeClass("ui-state-disabled");
+      $container.find(".slick-pager-nav span").removeClass("uistate-disabled");
       if (!state.canGotoFirst) {
-        $container.find(".ui-icon-seek-first").addClass("ui-state-disabled");
+        $container.find(".ui-icon-seek-first").addClass("uistate-disabled");
       }
       if (!state.canGotoLast) {
-        $container.find(".ui-icon-seek-end").addClass("ui-state-disabled");
+        $container.find(".ui-icon-seek-end").addClass("uistate-disabled");
       }
       if (!state.canGotoNext) {
-        $container.find(".ui-icon-seek-next").addClass("ui-state-disabled");
+        $container.find(".ui-icon-seek-next").addClass("uistate-disabled");
       }
       if (!state.canGotoPrev) {
-        $container.find(".ui-icon-seek-prev").addClass("ui-state-disabled");
+        $container.find(".ui-icon-seek-prev").addClass("uistate-disabled");
       }
 
       if (pagingInfo.pageSize == 0) {
